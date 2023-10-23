@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Viridis</string>
+    <string name="gcp_id">802762295284-pfce9312sol0vvcdongt74jb8t9n9d8q.apps.googleusercontent.com</string>
+
+    <!-- Reduce, Reuse, Recycle -->
+    <string name="reduce_reuse_recycle">Reduzieren, Wiederverwenden, Recyceln</string>
+    <string name="reduce_consumption">Kaufen Sie nur, was Sie benötigen, und vermeiden Sie unnötige Einkäufe.</string>
+    <string name="reuse">Verwenden Sie wiederverwendbare Artikel anstelle von Einwegartikeln (z. B. Wasserflaschen, Einkaufstaschen).</string>
+    <string name="recycle">Sortieren Sie Materialien wie Papier, Karton, Glas und Plastik richtig und recyceln Sie sie.</string>
+
+    <!-- Conserve Energy -->
+    <string name="conserve_energy">Energie sparen</string>
+    <string name="use_energy_efficient_appliances">Verwenden Sie energieeffiziente Geräte und Beleuchtung.</string>
+    <string name="turn_off_lights_and_appliances">Schalten Sie Lichter und Geräte aus, wenn sie nicht in Gebrauch sind.</string>
+    <string name="seal_gaps_and_insulate_home">Dichten Sie Lücken ab und dämmen Sie Ihr Zuhause, um den Heiz- und Kühlbedarf zu reduzieren.</string>
+
+    <!-- Save Water -->
+    <string name="save_water">Wasser sparen</string>
+    <string name="fix_water_leaks">Beheben Sie Lecks umgehend.</string>
+    <string name="install_low_flow_fixtures">Installieren Sie wassersparende Wasserhähne und Duschköpfe.</string>
+    <string name="be_mindful_of_water_usage">Achten Sie auf den Wasserverbrauch (z. B. kürzere Duschen, volle Geschirrspülmaschinenladungen).</string>
+
+    <!-- Reduce Single-Use Plastics -->
+    <string name="reduce_single_use_plastics">Einwegplastik reduzieren</string>
+    <string name="avoid_single_use_plastic_products">Vermeiden Sie Einwegplastikprodukte wie Strohhalme, Besteck und Taschen.</string>
+    <string name="opt_for_reusable_alternatives">Wählen Sie wiederverwendbare Alternativen (z. B. Edelstahl-Strohhalme, Stofftaschen).</string>
+
+    <!-- Carpool, Bike, or Use Public Transit -->
+    <string name="carpool_bike_or_use_public_transit">Fahrgemeinschaft bilden, Radfahren oder öffentliche Verkehrsmittel nutzen</string>
+    <string name="reduce_carbon_footprint">Reduzieren Sie Ihren CO2-Fußabdruck durch die Nutzung öffentlicher Verkehrsmittel oder Fahrgemeinschaften.</string>
+    <string name="consider_biking_or_walking">Erwägen Sie das Radfahren oder Gehen für kurze Strecken.</string>
+
+    <!-- Support Renewable Energy -->
+    <string name="support_renewable_energy">Erneuerbare Energien unterstützen</string>
+    <string name="choose_renewable_energy_provider">Wählen Sie, wenn möglich, einen Anbieter erneuerbarer Energien für Ihren Strom.</string>
+    <string name="install_solar_panels">Installieren Sie Solarmodule oder unterstützen Sie Gemeinschafts-Solarprojekte.</string>
+
+    <!-- Eat Sustainably -->
+    <string name="eat_sustainably">Nachhaltig essen</string>
+    <string name="reduce_meat_consumption">Reduzieren Sie den Fleischkonsum und wählen Sie pflanzliche Mahlzeiten.</string>
+    <string name="choose_locally_sourced_organic_foods">Wählen Sie lokal produzierte und biologische Lebensmittel, wenn möglich.</string>
+
+    <!-- Reduce Food Waste -->
+    <string name="reduce_food_waste">Lebensmittelabfall reduzieren</string>
+    <string name="plan_meals_to_minimize_waste">Planen Sie Mahlzeiten, um Lebensmittelverderb zu minimieren.</string>
+    <string name="compost_organic_waste">Kompostieren Sie organische Abfälle.</string>
+
+    <!-- Plant Trees and Maintain Green Spaces -->
+    <string name="plant_trees_and_maintain_green_spaces">Bäume pflanzen und Grünflächen pflegen</string>
+    <string name="participate_in_tree_planting_initiatives">Beteiligen Sie sich an Baumpflanzinitiativen in Ihrer Gemeinde.</string>
+    <string name="maintain_or_support_local_parks">Pflegen oder unterstützen Sie lokale Parks und Grünflächen.</string>
+
+    <!-- Advocate for Change -->
+    <string name="advocate_for_change">Sich für Veränderungen einsetzen</string>
+    <string name="support_environmental_policies">Unterstützen Sie politische Maßnahmen und Initiativen, die die Umwelterhaltung fördern.</string>
+    <string name="write_to_your_representatives">Schreiben Sie an Ihre Vertreter und äußern Sie Ihre Bedenken hinsichtlich Umweltfragen.</string>
+
+    <!-- Educate Yourself and Others -->
+    <string name="educate_yourself_and_others">Sich selbst und andere informieren</string>
+    <string name="stay_informed_about_environmental_issues">Bleiben Sie über Umweltfragen informiert.</string>
+    <string name="share_knowledge_with_friends_and_family">Teilen Sie Ihr Wissen mit Freunden und Familie, um das Bewusstsein zu erhöhen.</string>
+
+    <!-- Reduce Car Emissions -->
+    <string name="reduce_car_emissions">Autoemissionen reduzieren</string>
+    <string name="keep_your_car_well_maintained">Pflegen Sie Ihr Auto gut, um Emissionen zu reduzieren.</string>
+    <string name="consider_hybrid_or_electric_vehicles">Erwägen Sie Hybrid- oder Elektrofahrzeuge beim Kauf eines neuen Autos.</string>
+
+    <!-- Reduce Air Travel -->
+    <string name="reduce_air_travel">Flugreisen reduzieren</string>
+    <string name="choose_alternatives_to_air_travel">Wählen Sie, wenn möglich, Alternativen zum Fliegen für kürzere Strecken.</string>
+    <string name="consider_virtual_meetings">Erwägen Sie virtuelle Meetings, um die Notwendigkeit von Dienstreisen zu reduzieren.</string>
+
+    <!-- Support Conservation Organizations -->
+    <string name="support_conservation_organizations">Naturschutzorganisationen unterstützen</string>
+    <string name="contribute_to_or_volunteer_with_organizations">Tragen Sie dazu bei oder engagieren Sie sich ehrenamtlich bei Naturschutzorganisationen.</string>
+    <string name="participate_in_local_cleanup_events">Nehmen Sie an örtlichen Aufräumaktionen und Naturschutzprojekten teil.</string>
+
+    <!-- Practice Sustainable Gardening -->
+    <string name="practice_sustainable_gardening">Nachhaltige Gartengestaltung praktizieren</string>
+    <string name="use_native_plants_in_your_garden">Verwenden Sie einheimische Pflanzen in Ihrem Garten.</string>
+    <string name="avoid_pesticides_and_chemical_fertilizers">Vermeiden Sie Pestizide und chemische Düngemittel.</string>
+
+    <string name="what_is_virids_tracker">Unsere App bietet eine tägliche Check-in-Funktion, die Mitglieder dazu ermutigt, umweltfreundliche Gewohnheiten in ihren Alltag zu integrieren. Indem sie sich einfach anmelden und ihre nachhaltigen Handlungen teilen, wie beispielsweise das Gehen anstelle des Autofahrens oder die Reduzierung von Abfall zu Hause, können Nutzer ihre umweltfreundlichen Gewohnheiten verfolgen und einen Beitrag für eine grünere Welt leisten. Es ist ein kleiner Schritt hin zu einem nachhaltigeren Lebensstil, Tag für Tag.</string>
+</resources>
