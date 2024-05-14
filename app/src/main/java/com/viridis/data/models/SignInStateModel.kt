@@ -1,6 +1,6 @@
-package com.viridis.ui.signIn
+package com.viridis.data.models
 
-data class SignInState(
+data class SignInStateModel(
     val isSignInSuccessful: Boolean = false,
     val signInError: String? = null
 )

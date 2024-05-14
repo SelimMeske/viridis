@@ -1,4 +1,4 @@
-package com.viridis.ui.news.model
+package com.viridis.data.models
 
 data class NewsModel(
     val title: String = "",

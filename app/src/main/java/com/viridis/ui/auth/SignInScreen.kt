@@ -1,4 +1,4 @@
-package com.viridis.ui.signIn
+package com.viridis.ui.auth
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,10 +27,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.viridis.R
+import com.viridis.data.models.SignInStateModel
 
 @Composable
 fun SignInScreen(
-    state: SignInState,
+    state: SignInStateModel,
+    isLoadingState: Boolean,
     onSignInClick: () -> Unit
 ) {
     LaunchedEffect(key1 = state.signInError) {
@@ -52,6 +57,14 @@ fun SignInScreen(
             modifier = Modifier
                 .size(180.dp)
         )
+        if (isLoadingState) {
+            Spacer(modifier = Modifier.height(10.dp))
+            CircularProgressIndicator(
+                modifier = Modifier.width(64.dp),
+                color = MaterialTheme.colorScheme.surfaceVariant,
+                trackColor = MaterialTheme.colorScheme.secondary,
+            )
+        }
         Spacer(modifier = Modifier.height(200.dp))
         OutlinedButton(
             onClick = onSignInClick,

@@ -1,4 +1,4 @@
-package com.viridis.ui.polution_screen
+package com.viridis.ui.pollution
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -30,12 +30,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.viridis.data.models.AirQualityModel
 import com.viridis.ui.utils.PollutionLevels
 import java.lang.NumberFormatException
 
 @Composable
 fun PollutionScreen(
-    pollutionData: AirQualityData,
+    pollutionData: AirQualityModel,
     viewModel: PollutionViewModel,
     fetchCountryPollutionData: (country: CountryKeywordEnum) -> Unit
 ) {

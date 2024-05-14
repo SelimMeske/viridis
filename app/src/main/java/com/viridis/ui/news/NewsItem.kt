@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.viridis.ui.news.model.NewsModel
+import com.viridis.data.models.NewsModel
 
 @Composable
 fun NewsItem(news: NewsModel, onClick: () -> Unit) {

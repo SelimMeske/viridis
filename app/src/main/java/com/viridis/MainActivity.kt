@@ -1,7 +1,6 @@
 package com.viridis
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -36,9 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -58,15 +55,16 @@ import com.google.android.gms.auth.api.identity.Identity
 import com.viridis.ui.BottomBarItem
 import com.viridis.ui.auth.GoogleAuthUiClient
 import com.viridis.ui.eco_tracker.EcoTrackerScreen
+import com.viridis.ui.gallery.GalleryScreen
 import com.viridis.ui.home.HomeScreen
 import com.viridis.ui.news.NewsDetailScreen
 import com.viridis.ui.news.NewsScreen
 import com.viridis.ui.news.NewsViewModel
-import com.viridis.ui.polution_screen.PollutionScreen
-import com.viridis.ui.polution_screen.PollutionViewModel
+import com.viridis.ui.pollution.PollutionScreen
+import com.viridis.ui.pollution.PollutionViewModel
 import com.viridis.ui.profile.ProfileScreen
-import com.viridis.ui.signIn.SignInScreen
-import com.viridis.ui.signIn.SignInViewModel
+import com.viridis.ui.auth.SignInScreen
+import com.viridis.ui.auth.SignInViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -75,7 +73,6 @@ class MainActivity : ComponentActivity() {
 
     private val googleAuthUiClient by lazy {
         GoogleAuthUiClient(
-            context = applicationContext,
             oneTapClient = Identity.getSignInClient(applicationContext)
         )
     }
@@ -93,11 +90,12 @@ class MainActivity : ComponentActivity() {
                 BottomBarItem("News", R.drawable.baseline_newspaper_24, "news"),
                 BottomBarItem("Tracker", R.drawable.baseline_checklist_24, "ecoTracker/$memberId"),
                 //BottomBarItem("Footprint", R.drawable.baseline_calculate_24, "footprint"),
+                BottomBarItem("Gallery", R.drawable.baseline_newspaper_24, "gallery"),
                 BottomBarItem("Profile", R.drawable.baseline_person_24, "profile")
             )
 
             val bottomBarDestinations =
-                listOf("home", "newsScreen", "ecoTracker", "footprint", "profile")
+                listOf("home", "newsScreen", "ecoTracker", "footprint", "gallery", "profile")
             var showBottomBar by rememberSaveable { mutableStateOf(false) }
 
             showBottomBar = when (navBackStackEntry?.destination?.route) {
@@ -167,6 +165,7 @@ class MainActivity : ComponentActivity() {
                         composable("sign_in") {
                             val viewModel = viewModel<SignInViewModel>()
                             val state by viewModel.state.collectAsStateWithLifecycle()
+                            var isLoginIntentLoading by remember { mutableStateOf(false) }
 
                             if (googleAuthUiClient.getSignedInUser()?.userId != null) {
                                 navController.navigate("home")
@@ -175,6 +174,7 @@ class MainActivity : ComponentActivity() {
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
                                 onResult = { result ->
+                                    isLoginIntentLoading = false
                                     if (result.resultCode == RESULT_OK) {
                                         lifecycleScope.launch {
                                             val signInResult =
@@ -195,7 +195,8 @@ class MainActivity : ComponentActivity() {
 
                             }
 
-                            SignInScreen(state = state) {
+                            SignInScreen(state = state, isLoginIntentLoading) {
+                                isLoginIntentLoading = true
                                 lifecycleScope.launch {
                                     val signInIntentSender = googleAuthUiClient.signIn()
                                     launcher.launch(
@@ -223,6 +224,10 @@ class MainActivity : ComponentActivity() {
                                 newsState.value,
                                 navController
                             )
+                        }
+
+                        composable("gallery") {
+                            GalleryScreen()
                         }
 
                         composable("pollutionScreen") {

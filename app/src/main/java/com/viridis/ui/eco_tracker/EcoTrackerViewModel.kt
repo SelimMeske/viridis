@@ -1,18 +1,17 @@
 package com.viridis.ui.eco_tracker
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
-import com.viridis.api.ApiService
+import com.viridis.data.repositories.EcoTrackerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -22,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EcoTrackerViewModel @Inject constructor(
-    private val apiService: ApiService,
+    private val ecoTrackerRepository: EcoTrackerRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val memberId = checkNotNull(savedStateHandle.get<String>("memberId"))
@@ -62,29 +61,29 @@ class EcoTrackerViewModel @Inject constructor(
 
     private fun getTrackedDates() {
         viewModelScope.launch {
-            try {
-                val datesList = mutableStateListOf<String>()
-                val data = apiService.getTrackerDate(memberId).body() ?: emptyMap()
-                _checkInButtonState.value = data.values.contains(today)
-                data.values.forEach {
-                    datesList.add(it)
+            ecoTrackerRepository.fetchTrackerDate(memberId)
+                .flowOn(Dispatchers.IO)
+                .catch { /* Handle error */ }
+                .collect {
+                    val datesList = mutableStateListOf<String>()
+                    _checkInButtonState.value = it.values.contains(today)
+                    it.values.forEach { date ->
+                        datesList.add(date)
+                    }
+                    _dateState.value = datesList
                 }
-                _dateState.value = datesList
-            } catch (e: Exception) {
-                _dateState.value = mutableStateListOf()
-            }
         }
     }
 
     fun setTrackedDate() {
         viewModelScope.launch {
-            try {
-                apiService.postTrackerDate(memberId, today)
-                // Pull the latest data to refresh the state
-                getTrackedDates()
-            } catch (e: Exception) {
-
-            }
+            ecoTrackerRepository.postTrackerDate(memberId, today)
+                .flowOn(Dispatchers.IO)
+                .catch { /* Handle error */ }
+                .collect {
+                    // Pull the latest data to refresh the state
+                    getTrackedDates()
+                }
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.viridis.ui.auth
 
-import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
@@ -9,12 +8,13 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.viridis.data.models.SignInModel
+import com.viridis.data.models.UserModel
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 import java.util.concurrent.CancellationException
 
 class GoogleAuthUiClient(
-    private val context: Context,
     private val oneTapClient: SignInClient
 ) {
     private val auth = Firebase.auth
@@ -30,15 +30,15 @@ class GoogleAuthUiClient(
         return result?.pendingIntent?.intentSender
     }
 
-    suspend fun getSignInResultFromIntent(intent: Intent): SignInResult {
+    suspend fun getSignInResultFromIntent(intent: Intent): SignInModel {
         val credential = oneTapClient.getSignInCredentialFromIntent(intent)
         val googleIdToken = credential.googleIdToken
         val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
         return try {
             val user = auth.signInWithCredential(googleCredentials).await().user
-            SignInResult(
+            SignInModel(
                 data = user?.run {
-                    UserData(
+                    UserModel(
                         userId = uid,
                         username = displayName,
                         profilePictureUrl = photoUrl?.toString()
@@ -49,15 +49,15 @@ class GoogleAuthUiClient(
         } catch (e: Exception) {
             e.printStackTrace()
             if (e is CancellationException) throw e
-            SignInResult(
+            SignInModel(
                 data = null,
                 errorMessage = e.localizedMessage
             )
         }
     }
 
-    fun getSignedInUser(): UserData? = auth.currentUser?.run {
-        UserData(
+    fun getSignedInUser(): UserModel? = auth.currentUser?.run {
+        UserModel(
             userId = uid,
             username = displayName,
             profilePictureUrl = photoUrl?.toString()

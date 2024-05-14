@@ -1,4 +1,4 @@
-package com.viridis.ui.polution_screen
+package com.viridis.ui.pollution
 
 import com.viridis.R
 

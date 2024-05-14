@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.viridis.R
 import com.viridis.ui.news.NewsItem
-import com.viridis.ui.news.model.NewsModel
+import com.viridis.data.models.NewsModel
 
 @Composable
 fun HomeScreen(

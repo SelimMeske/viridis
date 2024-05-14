@@ -1,21 +1,26 @@
-package com.viridis.ui.polution_screen
+package com.viridis.ui.pollution
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.viridis.api.ApiService
+import com.viridis.data.models.AirQualityModel
+import com.viridis.data.repositories.AirPollutionRepository
+import com.viridis.service.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class PollutionViewModel @Inject constructor(
-    private val apiService: ApiService
+    private val repository: AirPollutionRepository
 ) : ViewModel() {
 
-    private val _pollutionState = MutableStateFlow(AirQualityData())
+    private val _pollutionState = MutableStateFlow(AirQualityModel())
     val pollutionState = _pollutionState.asStateFlow()
 
     private val _selectedFlag = MutableStateFlow(0)
@@ -27,12 +32,12 @@ class PollutionViewModel @Inject constructor(
 
     fun fetchPollutionData(country: CountryKeywordEnum) {
         viewModelScope.launch {
-            try {
-                val data = apiService.getAirPollutionData(keyword = country.value).body() ?: AirQualityData()
-                _pollutionState.value = data
-            } catch (e: Exception) {
-                _pollutionState.value = AirQualityData()
-            }
+            repository.fetchAirPollutionData(country.value)
+                .flowOn(Dispatchers.IO)
+                .catch { /* Handle error */ }
+                .collect {
+                    _pollutionState.value = it
+                }
         }
     }
 
