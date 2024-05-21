@@ -7,8 +7,6 @@ import com.viridis.data.repositories.EcoTrackerRepositoryImpl
 import com.viridis.data.repositories.NewsRepository
 import com.viridis.data.repositories.NewsRepositoryImpl
 import com.viridis.service.ApiService
-import com.viridis.service.EcoTrackerService
-import com.viridis.service.NewsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +19,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {

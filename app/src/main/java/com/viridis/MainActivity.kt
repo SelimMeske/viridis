@@ -55,7 +55,6 @@ import com.google.android.gms.auth.api.identity.Identity
 import com.viridis.ui.BottomBarItem
 import com.viridis.ui.auth.GoogleAuthUiClient
 import com.viridis.ui.eco_tracker.EcoTrackerScreen
-import com.viridis.ui.gallery.GalleryScreen
 import com.viridis.ui.home.HomeScreen
 import com.viridis.ui.news.NewsDetailScreen
 import com.viridis.ui.news.NewsScreen
@@ -90,12 +89,11 @@ class MainActivity : ComponentActivity() {
                 BottomBarItem("News", R.drawable.baseline_newspaper_24, "news"),
                 BottomBarItem("Tracker", R.drawable.baseline_checklist_24, "ecoTracker/$memberId"),
                 //BottomBarItem("Footprint", R.drawable.baseline_calculate_24, "footprint"),
-                BottomBarItem("Gallery", R.drawable.baseline_newspaper_24, "gallery"),
                 BottomBarItem("Profile", R.drawable.baseline_person_24, "profile")
             )
 
             val bottomBarDestinations =
-                listOf("home", "newsScreen", "ecoTracker", "footprint", "gallery", "profile")
+                listOf("home", "newsScreen", "ecoTracker", "footprint", "profile")
             var showBottomBar by rememberSaveable { mutableStateOf(false) }
 
             showBottomBar = when (navBackStackEntry?.destination?.route) {
@@ -224,10 +222,6 @@ class MainActivity : ComponentActivity() {
                                 newsState.value,
                                 navController
                             )
-                        }
-
-                        composable("gallery") {
-                            GalleryScreen()
                         }
 
                         composable("pollutionScreen") {
