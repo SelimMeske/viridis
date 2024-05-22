@@ -25,13 +25,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.viridis.R
 import com.viridis.data.models.AirQualityModel
-import com.viridis.ui.utils.PollutionLevels
 import java.lang.NumberFormatException
 
 @Composable
@@ -47,7 +48,7 @@ fun PollutionScreen(
         Text(
             modifier = Modifier
                 .padding(10.dp),
-            text = "Wählen Sie ein Land aus",
+            text = stringResource(R.string.choose_a_country),
             fontStyle = FontStyle.Italic,
             color = Color.LightGray
         )
@@ -75,7 +76,10 @@ fun PollutionScreen(
         Text(
             modifier = Modifier
                 .padding(10.dp),
-            text = "Aktuelle Anzeige der Luftqualität in: ${availableCountries[selectedItem.value].germanValue}",
+            text = stringResource(
+                R.string.air_quality_for_country,
+                availableCountries[selectedItem.value].germanValue
+            ),
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Bold,
             color = Color.LightGray
@@ -154,7 +158,7 @@ fun PollutionItem(cityName: String, AQI: String) {
                     Text(
                         modifier = Modifier.padding(start = 10.dp),
                         fontSize = 22.sp,
-                        text = PollutionLevels.getColorByAQI(airQualityInt).level,
+                        text = stringResource(id = PollutionLevels.getColorByAQI(airQualityInt).level),
                         color = Color.Black
                     )
                 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="what_is_virids_tracker">Naša aplikacija nudi funkciju dnevne prijave, koja podstiče članove da integriraju ekološki prihvatljive navike u svoju svakodnevicu. Jednostavnom prijavom i dijeljenjem svojih održivih radnji, kao što su hodanje umjesto vožnje autom ili smanjenje otpada kod kuće, korisnici mogu pratiti svoje ekološke navike i doprinijeti zelenijem svijetu. To je mali korak ka održivijem načinu života, dan po dan.</string>
+    <string name="register_now">Registrujte se sada!</string>
+    <string name="no_account">Nemate račun?</string>
+    <string name="sign_in">Prijavite se</string>
+    <string name="every_day_counts">Svaki dan je bitan!</string>
+    <string name="check_in">Prijavi se!</string>
+    <string name="eco_tracker_title">Viridis Eco-Tracker</string>
+    <string name="welcome">Dobrodošli</string>
+    <string name="already_checked_in">Već ste se prijavili danas.</string>
+    <string name="hot_news">Aktuelne vijesti</string>
+    <string name="where_should_i_start">Šta je održivost i gdje početi?</string>
+    <string name="air_quality">Kvalitet zraka!</string>
+    <string name="how_good_is_the_air">Koliko je dobar zrak? To pokazuje indeks kvaliteta zraka</string>
+    <string name="we_are_happy_that_you_are_back">Drago nam je što ste se vratili!</string>
+    <string name="hello">Zdravo</string>
+    <string name="written_by">Napisao: %1$s</string>
+    <string name="hot_news_for_you">Aktuelne vijesti za vas</string>
+    <string name="read_more">Pročitajte više</string>
+    <string name="choose_a_country">Odaberite zemlju</string>
+    <string name="air_quality_for_country">Aktuelni prikaz kvaliteta zraka u: %1$s</string>
+    <string name="undefined">Nedefinirano</string>
+    <string name="good">Dobro</string>
+    <string name="moderate">Umjereno</string>
+    <string name="unhealthy_for_sesitive">Štetno za osjetljive grupe</string>
+    <string name="unhealthy">Štetno</string>
+    <string name="very_unhealthy">Vrlo štetno</string>
+    <string name="sign_out">Odjavite se</string>
+    <string name="home">Početna</string>
+    <string name="news">Vijesti</string>
+    <string name="tracker">Praćenje</string>
+    <string name="profile">Profil</string>
+</resources>

@@ -4,7 +4,6 @@ import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,12 +13,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -31,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -40,7 +38,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.viridis.R
 import com.viridis.ui.shared_components.ColorScheme
 import com.viridis.ui.shared_components.CoreButton
-import com.viridis.ui.utils.EcoTrackerContent
 
 @Composable
 fun EcoTrackerScreen(
@@ -91,7 +88,7 @@ fun EcoTrackerScreen(
                 )
 
                 Text(
-                    text = "Jeder Tag zählt!",
+                    text = stringResource(R.string.every_day_counts),
                     fontStyle = FontStyle.Italic,
                     fontSize = 14.sp,
                     modifier = Modifier.padding(bottom = 20.dp)
@@ -142,11 +139,11 @@ fun EcoTrackerScreen(
                 }
                 val context = LocalContext.current
 
-                CoreButton(text = "Einchecken!", colorScheme = ColorScheme.GREEN) {
+                CoreButton(text = stringResource(R.string.check_in), colorScheme = ColorScheme.GREEN) {
                     if (checkInButtonState) {
                         Toast.makeText(
                             context,
-                            "You have already checked in today.",
+                            R.string.already_checked_in,
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
@@ -158,7 +155,7 @@ fun EcoTrackerScreen(
         Column (
             modifier = Modifier.padding(horizontal = 10.dp)
         ) {
-            Text(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, text = "Viridis Eco-Tracker", modifier = Modifier.padding(bottom = 20.dp))
+            Text(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, text = stringResource(R.string.eco_tracker_title), modifier = Modifier.padding(bottom = 20.dp))
             Text(text = context.getString(R.string.what_is_virids_tracker), fontSize = 16.sp, modifier = Modifier.padding(bottom = 20.dp))
         }
     }

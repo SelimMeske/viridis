@@ -1,5 +1,7 @@
 package com.viridis
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -37,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -66,6 +69,7 @@ import com.viridis.ui.auth.SignInScreen
 import com.viridis.ui.auth.SignInViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -85,11 +89,10 @@ class MainActivity : ComponentActivity() {
             val memberId = googleAuthUiClient.getSignedInUser()?.userId
 
             val bottomBarItems = listOf(
-                BottomBarItem("Home", R.drawable.baseline_home_24, "home"),
-                BottomBarItem("News", R.drawable.baseline_newspaper_24, "news"),
-                BottomBarItem("Tracker", R.drawable.baseline_checklist_24, "ecoTracker/$memberId"),
-                //BottomBarItem("Footprint", R.drawable.baseline_calculate_24, "footprint"),
-                BottomBarItem("Profile", R.drawable.baseline_person_24, "profile")
+                BottomBarItem(R.string.home, R.drawable.baseline_home_24, "home"),
+                BottomBarItem(R.string.news, R.drawable.baseline_newspaper_24, "news"),
+                BottomBarItem(R.string.tracker, R.drawable.baseline_checklist_24, "ecoTracker/$memberId"),
+                BottomBarItem(R.string.profile, R.drawable.baseline_person_24, "profile")
             )
 
             val bottomBarDestinations =
@@ -293,7 +296,7 @@ fun BottomNavigationBar(
 @Composable
 fun BottomBarSingleItem(
     icon: Int,
-    title: String,
+    title: Int,
     route: String,
     onItemClick: () -> Unit,
     navController: NavHostController
@@ -331,6 +334,6 @@ fun BottomBarSingleItem(
             tint = if (currentlySelect) Color.Blue else Color.DarkGray,
             contentDescription = ""
         )
-        Text(title)
+        Text(stringResource(id = title))
     }
 }

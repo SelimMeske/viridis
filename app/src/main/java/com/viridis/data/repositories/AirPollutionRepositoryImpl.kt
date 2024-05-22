@@ -8,5 +8,4 @@ class AirPollutionRepositoryImpl(private val service: ApiService) : AirPollution
     override fun fetchAirPollutionData(keyword: String) = flow {
         emit(service.getAirPollutionData(keyword = keyword))
     }
-
 }

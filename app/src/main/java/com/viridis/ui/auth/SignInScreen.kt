@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,7 +38,7 @@ fun SignInScreen(
 ) {
     LaunchedEffect(key1 = state.signInError) {
         state.signInError?.let {
-            
+            // Show Error
         }
     }
     
@@ -80,7 +81,7 @@ fun SignInScreen(
             )
             Text(
                 color = Color.White,
-                text = "Anmelden",
+                text = stringResource(R.string.sign_in),
                 fontSize = 22.sp
             )
         }
@@ -90,12 +91,12 @@ fun SignInScreen(
                 color = Color.LightGray,
                 modifier = Modifier
                     .padding(end = 5.dp),
-                text = "Sie haben kein Konto?",
+                text = stringResource(R.string.no_account),
                 fontSize = 12.sp
             )
             Text(
                 color = Color.White,
-                text = "Registrieren Sie sich jetzt!",
+                text = stringResource(R.string.register_now),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold
             )

@@ -14,8 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.viridis.R
 import com.viridis.data.models.UserModel
 import com.viridis.ui.shared_components.ColorScheme
 import com.viridis.ui.shared_components.CoreButton
@@ -45,7 +47,7 @@ fun ProfileScreen(
                     .border(1.dp, color = Color.White, shape = CircleShape)
             )
             Text(text = userModel.username ?: "")
-            CoreButton(text = "Ausloggen", colorScheme = ColorScheme.GREEN) {
+            CoreButton(text = stringResource(R.string.sign_out), colorScheme = ColorScheme.GREEN) {
                 onSignOutClick()
             }
         }

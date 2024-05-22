@@ -13,12 +13,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.viridis.R
 
 @Composable
 fun NewsDetailScreen(
@@ -46,7 +48,10 @@ fun NewsDetailScreen(
             )
             Column(modifier = Modifier.padding(start = 20.dp, end = 20.dp)) {
                 Text(modifier = Modifier.padding(top = 10.dp), fontSize = 20.sp, fontWeight = FontWeight.Bold, text = currentNews.title)
-                Text(modifier = Modifier.padding(top = 10.dp), fontStyle = FontStyle.Italic, text = "Schreibt: ${currentNews.author}")
+                Text(modifier = Modifier.padding(top = 10.dp), fontStyle = FontStyle.Italic, text = stringResource(
+                    R.string.written_by, currentNews.author
+                )
+                )
                 Text(modifier = Modifier.padding(top = 20.dp), text = currentNews.content)
             }
         }

@@ -15,12 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.viridis.R
 import com.viridis.data.models.NewsModel
 import com.viridis.ui.shared_components.CoreButton
 
@@ -40,7 +42,9 @@ fun NewsScreen(
 
 @Composable
 fun NewsInfo(title: String, _author: String) {
-    val author = "Schreibt: $_author"
+    val author = stringResource(
+        R.string.written_by, _author
+    )
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -66,6 +70,9 @@ fun NewsInfo(title: String, _author: String) {
 
 @Composable
 fun LatestNews(news: NewsModel, onClick: () -> Unit) {
+    val author = stringResource(
+        R.string.written_by, news.author
+    )
     Box(
         modifier = Modifier
             .background(Color.White)
@@ -88,7 +95,7 @@ fun LatestNews(news: NewsModel, onClick: () -> Unit) {
             modifier = Modifier
                 .align(Alignment.Center)
         ) {
-            Text(color = Color.White, text = "Aktuelle Nachrichten für Sie")
+            Text(color = Color.White, text = stringResource(R.string.hot_news_for_you))
             Text(
                 text = createTitle(news.title),
                 fontWeight = FontWeight.Bold,
@@ -96,8 +103,8 @@ fun LatestNews(news: NewsModel, onClick: () -> Unit) {
                 fontSize = 20.sp
 
             )
-            Text(color = Color.White, text = "Schreibt: ${news.author}")
-            CoreButton(text = "Jetzt weiter lesen") {
+            Text(color = Color.White, text = author)
+            CoreButton(text = stringResource(R.string.read_more)) {
                 onClick()
             }
         }

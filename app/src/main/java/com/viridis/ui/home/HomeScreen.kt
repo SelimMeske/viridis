@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -32,14 +33,16 @@ fun HomeScreen(
             .verticalScroll(rememberScrollState())
     ) {
         HomeTopContainer(userName, profileImage)
-        HomeWelcomeCard(R.drawable.home_card_image, "Willkommen","Was ist Nachhaltigkeit und wo soll ich anfangen?") {
-
+        HomeWelcomeCard(R.drawable.home_card_image,
+            stringResource(R.string.welcome), stringResource(R.string.where_should_i_start)
+        ) {
+            // TODO: Implement on click functionality
         }
         Text(
             modifier = Modifier
                 .padding(vertical = 10.dp, horizontal = 16.dp),
             fontSize = 20.sp,
-            text = "Aktuelle Nachrichten"
+            text = stringResource(R.string.hot_news)
         )
         Column {
             if (latestNews.isNotEmpty()) {
@@ -48,9 +51,10 @@ fun HomeScreen(
                 }
             }
         }
-        HomeWelcomeCard(R.drawable.pollution, "Luftqualität!","Wie gut ist die Luft? Das zeigt der Luftqualitätsindex") {
+        HomeWelcomeCard(R.drawable.pollution,
+            stringResource(R.string.air_quality), stringResource(R.string.how_good_is_the_air)
+        ) {
             navController.navigate("pollutionScreen")
-
         }
     }
 }

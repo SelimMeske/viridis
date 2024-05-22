@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,12 +54,12 @@ fun HomeTopContainer(
                 Text(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    text = "Hi $userName",
+                    text = "${stringResource(id = R.string.hello)} $userName",
                     color = Color.White
                 )
                 Text(
                     fontSize = 12.sp,
-                    text = "Wir freuen uns, dass Sie zurück sind!",
+                    text = stringResource(R.string.we_are_happy_that_you_are_back),
                     color = Color.LightGray
                 )
             }

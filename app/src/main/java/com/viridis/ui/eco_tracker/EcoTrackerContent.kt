@@ -1,4 +1,4 @@
-package com.viridis.ui.utils
+package com.viridis.ui.eco_tracker
 
 import com.viridis.R
 
