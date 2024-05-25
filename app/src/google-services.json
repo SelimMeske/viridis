@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "802762295284",
+    "firebase_url": "https://viridis-c8976-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "viridis-c8976",
     "storage_bucket": "viridis-c8976.appspot.com"
   },
@@ -14,7 +15,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "802762295284-99r8eu9emogvu0pbneot5heqanusnist.apps.googleusercontent.com",
+          "client_id": "802762295284-7cjgugn4k902o219cr7gbep1cfp8t4nt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.viridis",
+            "certificate_hash": "fc56467331d38db60fba199bef744ef8d19c0bb7"
+          }
+        },
+        {
+          "client_id": "802762295284-pfce9312sol0vvcdongt74jb8t9n9d8q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.viridis",
+            "certificate_hash": "6c45434e4c053b7773a8ce95a7c87e4099e9b040"
+          }
+        },
+        {
+          "client_id": "802762295284-kdckerdv5c3l5a663fggri0i7iefljec.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

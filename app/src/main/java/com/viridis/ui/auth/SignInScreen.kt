@@ -1,7 +1,9 @@
 package com.viridis.ui.auth
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,9 +40,11 @@ fun SignInScreen(
     isLoadingState: Boolean,
     onSignInClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
     LaunchedEffect(key1 = state.signInError) {
-        state.signInError?.let {
-            // Show Error
+        state.signInError?.let { errorMessage ->
+            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
         }
     }
     
@@ -69,7 +75,6 @@ fun SignInScreen(
         Spacer(modifier = Modifier.height(200.dp))
         OutlinedButton(
             onClick = onSignInClick,
-            //colors = ButtonDefaults.outlinedButtonColors(containerColor = Color(0xFF68B984)),
             border = BorderStroke(2.dp, Color.White)
         ) {
             Image(
@@ -87,6 +92,8 @@ fun SignInScreen(
         }
         Spacer(modifier = Modifier.height(20.dp))
         Row {
+            val localUriHandle = LocalUriHandler.current
+            val googleSignUpUri = "https://accounts.google.com/v3/signin/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1156598317%3A1716551773901175&ddm=0"
             Text(
                 color = Color.LightGray,
                 modifier = Modifier
@@ -95,6 +102,9 @@ fun SignInScreen(
                 fontSize = 12.sp
             )
             Text(
+                modifier = Modifier.clickable {
+                    localUriHandle.openUri(googleSignUpUri)
+                },
                 color = Color.White,
                 text = stringResource(R.string.register_now),
                 fontSize = 12.sp,

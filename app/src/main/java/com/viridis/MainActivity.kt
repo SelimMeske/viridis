@@ -1,7 +1,5 @@
 package com.viridis
 
-import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -193,7 +191,6 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate("home")
                                     viewModel.resetState()
                                 }
-
                             }
 
                             SignInScreen(state = state, isLoginIntentLoading) {
