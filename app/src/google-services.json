@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "802762295284-36hf8oh3463tjj7b15d9uugvg3u7qfk6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.viridis",
+            "certificate_hash": "3ef9a6755ce93e9f9bfa956e26b436b06d64e85e"
+          }
+        },
+        {
           "client_id": "802762295284-7cjgugn4k902o219cr7gbep1cfp8t4nt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
