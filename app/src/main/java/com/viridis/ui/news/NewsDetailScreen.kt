@@ -1,16 +1,20 @@
 package com.viridis.ui.news
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
@@ -32,6 +36,7 @@ fun NewsDetailScreen(
     }
 
     val news by viewModel.newsState.collectAsState()
+
     if (news.isNotEmpty()) {
         Column(
             modifier = Modifier
@@ -55,5 +60,10 @@ fun NewsDetailScreen(
                 Text(modifier = Modifier.padding(top = 20.dp), text = currentNews.content)
             }
         }
+    } else {
+        CircularProgressIndicator(modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+        )
     }
 }

@@ -32,6 +32,9 @@ class EcoTrackerViewModel @Inject constructor(
     private val _checkInButtonState = MutableStateFlow(false)
     val checkInButtonState = _checkInButtonState.asStateFlow()
 
+    private var _showProgressIndicator = MutableStateFlow(true)
+    val showProgressIndicator = _showProgressIndicator.asStateFlow()
+
     private val germanTimeZone: TimeZone = TimeZone.getTimeZone("Europe/Berlin")
     private val calendar: Calendar = Calendar.getInstance(germanTimeZone)
     private val today = formatDate(calendar)
@@ -71,12 +74,14 @@ class EcoTrackerViewModel @Inject constructor(
                         datesList.add(date)
                     }
                     _dateState.value = datesList
+                    _showProgressIndicator.value = false
                 }
         }
     }
 
     fun setTrackedDate() {
         viewModelScope.launch {
+            _showProgressIndicator.value = true
             ecoTrackerRepository.postTrackerDate(memberId, today)
                 .flowOn(Dispatchers.IO)
                 .catch { /* Handle error */ }

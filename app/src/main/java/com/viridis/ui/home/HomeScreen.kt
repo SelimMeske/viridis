@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +38,7 @@ fun HomeScreen(
         HomeWelcomeCard(R.drawable.home_card_image,
             stringResource(R.string.welcome), stringResource(R.string.where_should_i_start)
         ) {
-            // TODO: Implement on click functionality
+            navController.navigate("introScreen")
         }
         Text(
             modifier = Modifier
@@ -49,6 +51,11 @@ fun HomeScreen(
                 for (i in 0..3) {
                     NewsItem(latestNews[i]) { navController.navigate("newsDetails/${i}") }
                 }
+            } else {
+                CircularProgressIndicator(modifier = Modifier
+                    .fillMaxSize()
+                    .wrapContentSize(Alignment.Center)
+                )
             }
         }
         HomeWelcomeCard(R.drawable.pollution,

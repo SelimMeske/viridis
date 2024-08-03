@@ -26,6 +26,9 @@ class PollutionViewModel @Inject constructor(
     private val _selectedFlag = MutableStateFlow(0)
     val selectedFlag = _selectedFlag.asStateFlow()
 
+    private val _showProgressIndicator = MutableStateFlow(true)
+    val showProgressIndicator = _showProgressIndicator.asStateFlow()
+
     init {
         fetchPollutionData(CountryKeywordEnum.GERMANY)
     }
@@ -37,11 +40,13 @@ class PollutionViewModel @Inject constructor(
                 .catch { /* Handle error */ }
                 .collect {
                     _pollutionState.value = it
+                    _showProgressIndicator.value = false
                 }
         }
     }
 
     fun selectFlag(value: Int) {
+        _showProgressIndicator.value = true
         _selectedFlag.value = value
     }
 }

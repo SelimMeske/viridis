@@ -17,7 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,6 +27,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -65,9 +66,9 @@ import com.viridis.ui.pollution.PollutionViewModel
 import com.viridis.ui.profile.ProfileScreen
 import com.viridis.ui.auth.SignInScreen
 import com.viridis.ui.auth.SignInViewModel
+import com.viridis.ui.intro.IntroScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -94,7 +95,7 @@ class MainActivity : ComponentActivity() {
             )
 
             val bottomBarDestinations =
-                listOf("home", "newsScreen", "ecoTracker", "footprint", "profile")
+                listOf("home", "newsScreen", "ecoTracker", "profile")
             var showBottomBar by rememberSaveable { mutableStateOf(false) }
 
             showBottomBar = when (navBackStackEntry?.destination?.route) {
@@ -122,7 +123,7 @@ class MainActivity : ComponentActivity() {
                                 if (canNavigateBack) {
                                     IconButton({ navController.popBackStack() }) {
                                         Icon(
-                                            imageVector = Icons.Default.ArrowBack,
+                                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                             contentDescription = null
                                         )
                                     }
@@ -147,6 +148,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val newsViewModel = viewModel<NewsViewModel>()
                     val newsState = newsViewModel.newsState.collectAsStateWithLifecycle()
+                    val showProgressIndicatorForNews = newsViewModel.showProgressIndicator.collectAsStateWithLifecycle()
 
                     val pollutionViewModel = viewModel<PollutionViewModel>()
                     val stateOfPoll =
@@ -230,9 +232,13 @@ class MainActivity : ComponentActivity() {
                             }
                         }
 
+                        composable("introScreen") {
+                            IntroScreen()
+                        }
+
                         navigation(startDestination = "newsScreen", route = "news") {
                             composable("newsScreen") {
-                                NewsScreen(news = newsState.value, navController = navController)
+                                NewsScreen(news = newsState.value, navController = navController, showProgressIndicatorForNews.value)
                             }
 
                             composable("newsDetails/{index}", arguments = listOf(
@@ -305,7 +311,10 @@ fun BottomBarSingleItem(
     DisposableEffect(navController) {
         val listener =
             NavController.OnDestinationChangedListener { _, destination, _ ->
-                currentlySelect = destination.parent?.route == route || destination.route == route
+                val currentDestination = route.substringBefore("/")
+                val parentRoute = destination.parent?.route?.substringBefore("/")
+                val mainRoute = destination.route?.substringBefore("/")
+                currentlySelect = (parentRoute == currentDestination) || (mainRoute == currentDestination)
             }
         navController.addOnDestinationChangedListener(listener)
         onDispose {

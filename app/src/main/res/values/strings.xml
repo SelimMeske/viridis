@@ -80,35 +80,47 @@
     <string name="use_native_plants_in_your_garden" translatable="false">Verwenden Sie einheimische Pflanzen in Ihrem Garten.</string>
     <string name="avoid_pesticides_and_chemical_fertilizers" translatable="false">Vermeiden Sie Pestizide und chemische Düngemittel.</string>
 
-    <string name="what_is_virids_tracker">Naša aplikacija nudi funkciju dnevne prijave, koja podstiče članove da integriraju ekološki prihvatljive navike u svoju svakodnevicu. Jednostavnom prijavom i dijeljenjem svojih održivih radnji, kao što su hodanje umjesto vožnje autom ili smanjenje otpada kod kuće, korisnici mogu pratiti svoje ekološke navike i doprinijeti zelenijem svijetu. To je mali korak ka održivijem načinu života, dan po dan.</string>
-    <string name="register_now">Registrujte se sada!</string>
-    <string name="no_account">Nemate račun?</string>
-    <string name="sign_in">Prijavite se</string>
-    <string name="every_day_counts">Svaki dan je bitan!</string>
-    <string name="check_in">Prijavi se!</string>
+    <string name="what_is_virids_tracker">Unsere App bietet eine Funktion für tägliche Anmeldungen, die Mitglieder dazu anregt, umweltfreundliche Gewohnheiten in ihren Alltag zu integrieren. Durch einfache Anmeldung und Teilen ihrer nachhaltigen Handlungen wie Gehen statt Autofahren oder Müllreduktion zu Hause können Nutzer ihre ökologischen Gewohnheiten verfolgen und zu einer grüneren Welt beitragen. Dies ist ein kleiner Schritt zu einem nachhaltigeren Lebensstil, Tag für Tag.</string>
+    <string name="register_now">Jetzt registrieren!</string>
+    <string name="no_account">Sie haben noch kein Konto?</string>
+    <string name="sign_in">Anmelden</string>
+    <string name="every_day_counts">Jeder Tag zählt!</string>
+    <string name="check_in">Einchecken!</string>
     <string name="eco_tracker_title">Viridis Eco-Tracker</string>
-    <string name="welcome">Dobrodošli</string>
-    <string name="already_checked_in">Već ste se prijavili danas.</string>
-    <string name="hot_news">Aktuelne vijesti</string>
-    <string name="where_should_i_start">Naučite šta je ekološka održivost i još mnogo toga!</string>
-    <string name="air_quality">Kvalitet zraka!</string>
-    <string name="how_good_is_the_air">Koliko je dobar zrak? To pokazuje indeks kvaliteta zraka</string>
-    <string name="we_are_happy_that_you_are_back">Drago nam je što ste se vratili!</string>
-    <string name="hello">Zdravo</string>
-    <string name="written_by">Napisao: %1$s</string>
-    <string name="hot_news_for_you">Aktuelne vijesti za vas</string>
-    <string name="read_more">Pročitajte više</string>
-    <string name="choose_a_country">Odaberite zemlju</string>
-    <string name="air_quality_for_country">Aktuelni prikaz kvaliteta zraka u: %1$s</string>
-    <string name="undefined">Nedefinirano</string>
-    <string name="good">Dobro</string>
-    <string name="moderate">Umjereno</string>
-    <string name="unhealthy_for_sesitive">Štetno za osjetljive grupe</string>
-    <string name="unhealthy">Štetno</string>
-    <string name="very_unhealthy">Vrlo štetno</string>
-    <string name="sign_out">Odjavite se</string>
-    <string name="home">Početna</string>
-    <string name="news">Vijesti</string>
-    <string name="tracker">Praćenje</string>
+    <string name="welcome">Willkommen</string>
+    <string name="already_checked_in">Sie haben sich heute bereits angemeldet.</string>
+    <string name="hot_news">Aktuelle Nachrichten</string>
+    <string name="where_should_i_start">Lernen Sie mehr über ökologische Nachhaltigkeit und vieles mehr!</string>
+    <string name="air_quality">Luftqualität</string>
+    <string name="how_good_is_the_air">Wie gut ist die Luft? Das zeigt der Luftqualitätsindex</string>
+    <string name="we_are_happy_that_you_are_back">Wir freuen uns, dass Sie zurück sind!</string>
+    <string name="hello">Hallo</string>
+    <string name="written_by">Verfasst von: %1$s</string>
+    <string name="hot_news_for_you">Aktuelle Nachrichten für Sie</string>
+    <string name="read_more">Mehr lesen</string>
+    <string name="choose_a_country">Land auswählen</string>
+    <string name="air_quality_for_country">Aktuelle Luftqualität in: %1$s</string>
+    <string name="undefined">Undefiniert</string>
+    <string name="good">Gut</string>
+    <string name="moderate">Mäßig</string>
+    <string name="unhealthy_for_sesitive">Ungesund für empfindliche Personen</string>
+    <string name="unhealthy">Ungesund</string>
+    <string name="very_unhealthy">Sehr ungesund</string>
+    <string name="sign_out">Abmelden</string>
+    <string name="home">Startseite</string>
+    <string name="news">Nachrichten</string>
+    <string name="tracker">Tracker</string>
     <string name="profile">Profil</string>
+    <string name="sustainability_title">Nachhaltigkeit verstehen und warum es wichtig ist</string>
+    <string name="sustainability_content">
+        Nachhaltigkeit bedeutet, natürliche Ressourcen so zu nutzen, dass sie auch für kommende Generationen erhalten bleiben. Es geht darum, ökologische, soziale und ökonomische Bedürfnisse gleichermaßen zu berücksichtigen, um eine ausgewogene Entwicklung zu gewährleisten.\n\n
+        Warum sollten Sie sich für Nachhaltigkeit interessieren?\n\n
+        1. Umweltschutz: Nachhaltigkeit schützt unsere Umwelt vor übermäßiger Ausbeutung und Verschmutzung. Durch die Erhaltung von Ökosystemen und den verantwortungsbewussten Umgang mit Ressourcen tragen wir zum Schutz der Artenvielfalt und des Klimas bei.\n\n
+        2. Zukunftsfähigkeit: Indem wir nachhaltige Praktiken fördern, sichern wir die Lebensgrundlagen kommender Generationen. Eine nachhaltige Lebensweise gewährleistet, dass unsere Kinder und Enkelkinder die gleichen Chancen auf eine gesunde Umwelt und wirtschaftliche Stabilität haben wie wir heute.\n\n
+        3. Soziale Gerechtigkeit: Nachhaltigkeit beinhaltet auch soziale Aspekte wie faire Arbeitsbedingungen, gerechte Entlohnung und die Förderung lokaler Gemeinschaften. Es geht darum, eine Welt zu schaffen, in der jeder Mensch Zugang zu den Grundbedürfnissen wie Nahrung, Wasser und Bildung hat.\n\n
+        4. Wirtschaftliche Stabilität: Nachhaltige Praktiken fördern langfristig stabile Wirtschaftssysteme. Unternehmen, die auf Nachhaltigkeit setzen, sind oft innovativ und profitieren von langfristiger Wettbewerbsfähigkeit.\n\n
+        5. Persönliche Verantwortung: Jeder Einzelne kann durch bewusste Konsumentscheidungen, Energiesparen und umweltfreundliches Verhalten einen Beitrag zur Nachhaltigkeit leisten. Kleine Veränderungen im Alltag können gemeinsam große positive Auswirkungen haben.\n\n
+        Durch ein bewusstes Engagement für Nachhaltigkeit können wir eine lebenswerte Zukunft für alle schaffen. Lassen Sie uns gemeinsam dazu beitragen, dass unsere Welt auch für kommende Generationen ein lebendiger und gesunder Planet bleibt.
+    </string>
+    <string name="earth_loves_you">Die Erde liebt dich.</string>
 </resources>

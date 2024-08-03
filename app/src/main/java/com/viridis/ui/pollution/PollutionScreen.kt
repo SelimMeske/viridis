@@ -9,17 +9,22 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,51 +48,60 @@ fun PollutionScreen(
 ) {
     Column {
         val selectedItem = viewModel.selectedFlag.collectAsState()
-        val availableCountries =
-            CountryKeywordEnum.values()
-        Text(
-            modifier = Modifier
-                .padding(10.dp),
-            text = stringResource(R.string.choose_a_country),
-            fontStyle = FontStyle.Italic,
-            color = Color.LightGray
-        )
-        LazyRow(modifier = Modifier.padding(0.dp)) {
-            items(availableCountries.size) {
-                Image(
-                    modifier = Modifier
-                        .size(
-                            if (selectedItem.value == it) {
-                                100.dp
-                            } else {
-                                60.dp
-                            }
-                        )
-                        .padding(10.dp)
-                        .clickable {
-                            fetchCountryPollutionData(availableCountries[it])
-                            viewModel.selectFlag(it)
-                        },
-                    painter = painterResource(id = availableCountries[it].image),
-                    contentDescription = null
-                )
+        val showProgressIndicator = viewModel.showProgressIndicator.collectAsState()
+
+        if (showProgressIndicator.value) {
+            CircularProgressIndicator(modifier = Modifier
+                .fillMaxSize()
+                .wrapContentSize(Alignment.Center)
+            )
+        } else {
+            val availableCountries =
+                CountryKeywordEnum.entries.toTypedArray()
+            Text(
+                modifier = Modifier
+                    .padding(10.dp),
+                text = stringResource(R.string.choose_a_country),
+                fontStyle = FontStyle.Italic,
+                color = Color.LightGray
+            )
+            LazyRow(modifier = Modifier.padding(0.dp)) {
+                items(availableCountries.size) {
+                    Image(
+                        modifier = Modifier
+                            .size(
+                                if (selectedItem.value == it) {
+                                    100.dp
+                                } else {
+                                    60.dp
+                                }
+                            )
+                            .padding(10.dp)
+                            .clickable {
+                                fetchCountryPollutionData(availableCountries[it])
+                                viewModel.selectFlag(it)
+                            },
+                        painter = painterResource(id = availableCountries[it].image),
+                        contentDescription = null
+                    )
+                }
             }
-        }
-        Text(
-            modifier = Modifier
-                .padding(10.dp),
-            text = stringResource(
-                R.string.air_quality_for_country,
-                availableCountries[selectedItem.value].germanValue
-            ),
-            fontStyle = FontStyle.Italic,
-            fontWeight = FontWeight.Bold,
-            color = Color.LightGray
-        )
-        LazyColumn {
-            items(pollutionData.data.size) {
-                val currentPollutionItem = pollutionData.data[it]
-                PollutionItem(currentPollutionItem.station.name, currentPollutionItem.aqi)
+            Text(
+                modifier = Modifier
+                    .padding(10.dp),
+                text = stringResource(
+                    R.string.air_quality_for_country,
+                    availableCountries[selectedItem.value].germanValue
+                ),
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.Bold,
+                color = Color.LightGray
+            )
+            LazyColumn {
+                items(pollutionData.data.size) {
+                    val currentPollutionItem = pollutionData.data[it]
+                    PollutionItem(currentPollutionItem.station.name, currentPollutionItem.aqi)
+                }
             }
         }
     }
