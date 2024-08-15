@@ -66,7 +66,9 @@ class EcoTrackerViewModel @Inject constructor(
         viewModelScope.launch {
             ecoTrackerRepository.fetchTrackerDate(memberId)
                 .flowOn(Dispatchers.IO)
-                .catch { /* Handle error */ }
+                .catch {
+                    _showProgressIndicator.value = false
+                }
                 .collect {
                     val datesList = mutableStateListOf<String>()
                     _checkInButtonState.value = it.values.contains(today)
